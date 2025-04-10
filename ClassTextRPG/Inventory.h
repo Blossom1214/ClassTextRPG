@@ -13,4 +13,7 @@ public:
 public:
 	void AddItem(const Item& _Newitem);
 	void ShowInventory()const; //인벤토리를 보여주는 용도
+	const int GetRow()const;
+	const int GetCols()const;
+	const std::vector<std::vector<Item>> Getgrid()const;
 };

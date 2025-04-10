@@ -11,5 +11,7 @@
 #include "GameFlow.h"
 #include "Inventory.h"
 #include "Item.h"
+#include "Shop.h"
+#include "SaveLoadManager.h"
 #include <ctime>
 #include <cstdlib>

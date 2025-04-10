@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "MonsterCage.h"
 #include "Shop.h"
+#include <vector>
 class SaveLoadManager
 {
 public:

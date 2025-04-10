@@ -138,6 +138,7 @@
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="MonsterCage.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="SaveLoadManager.cpp" />
     <ClCompile Include="Shop.cpp" />
     <ClCompile Include="Village.cpp" />
   </ItemGroup>
@@ -153,6 +154,7 @@
     <ClInclude Include="MonsterArray.h" />
     <ClInclude Include="MonsterCage.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="SaveLoadManager.h" />
     <ClInclude Include="Shop.h" />
     <ClInclude Include="TotalHeader.h" />
     <ClInclude Include="Village.h" />

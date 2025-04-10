@@ -84,6 +84,9 @@
     <ClCompile Include="Item.cpp">
       <Filter>소스 파일\Entities</Filter>
     </ClCompile>
+    <ClCompile Include="SaveLoadManager.cpp">
+      <Filter>소스 파일\GameSystem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameObject.h">
@@ -127,6 +130,9 @@
     </ClInclude>
     <ClInclude Include="Item.h">
       <Filter>헤더 파일\H_Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveLoadManager.h">
+      <Filter>헤더 파일\H_GameSystem</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

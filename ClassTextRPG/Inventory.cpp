@@ -48,4 +48,16 @@ void Inventory::ShowInventory()const
 	}
 
 }
+ const int Inventory::GetRow()const
+{
+	return _ROW;
+}
+const int Inventory::GetCols()const
+{
+	return _COLS;
+}
+const vector<vector<Item>> Inventory::Getgrid()const
+{
 
+	return _grid;
+}

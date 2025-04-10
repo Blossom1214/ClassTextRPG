@@ -15,7 +15,10 @@ public:
 	int& GetHp();
 	void SetHp(int hp);
 	void AddHp(int hp);
-	int GetAttack() const;
 	int& Getlevel();
+	std::string GetName()const;
+	int Gethp()const;
+	int GetAttack() const;
+	int GetLevel()const;
 
 };

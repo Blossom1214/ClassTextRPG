@@ -18,11 +18,24 @@ void Creature::AddHp(int hp)
 {
 	_hp += hp;
 }
+
+int& Creature::Getlevel()
+{
+	return _level;
+}
+string Creature::GetName()const
+{
+	return _name;
+}
+int Creature::Gethp()const 
+{
+	return _hp;
+}
 int Creature::GetAttack() const
 {
 	return _attack;
 }
-int& Creature::Getlevel()
+int Creature::GetLevel() const
 {
 	return _level;
 }

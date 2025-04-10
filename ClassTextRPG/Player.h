@@ -19,10 +19,12 @@ public:
 	Player();
 public:
 	void SelectPlayerJob();
-	int& Getgold();
+	int& GetGold();
 	void Addgold(int addgold);
 	void Minusgold(int minusgold);
 	void InfoPrint() override;
 	void AddItemToInventory(const Item& iTem);
 	void ShowInventorys()const;
+	int Getgold()const;
+	const Inventory& GetInventory() const;
 };

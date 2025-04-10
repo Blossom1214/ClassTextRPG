@@ -46,7 +46,7 @@ void Player::SelectPlayerJob()
 	cout << "\n마을로 입장합니다!" << endl;
 	system("pause");
 }
-int& Player::Getgold()
+int& Player::GetGold()
 {
 	return _gold;
 }
@@ -70,4 +70,12 @@ void Player::AddItemToInventory(const Item& item)
 void Player::ShowInventorys()const
 {
 	_playerInventory.ShowInventory();
+}
+int Player::Getgold()const
+{
+	return _gold;
+}
+const Inventory& Player::GetInventory() const
+{
+	return _playerInventory;
 }
