@@ -1,10 +1,8 @@
 # Visual Studio 관련
 .vs/
-*.vcxproj.*
 *.suo
 *.user
 *.userosscache
-*.sln.docstates
 
 # 빌드 폴더 무시
 Debug/

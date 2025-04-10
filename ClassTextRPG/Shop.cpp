@@ -19,8 +19,6 @@ void Shop::ShopSettingSellingItem()
         if (randomNum == 0)
         {
            
-
-
         }
 
 

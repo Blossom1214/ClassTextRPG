@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="소스 파일\GameSystem">
+      <UniqueIdentifier>{62760b60-d71b-4078-a59d-543182daf860}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Entities">
+      <UniqueIdentifier>{72106458-7b10-48c8-b285-06452107ef0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\System">
+      <UniqueIdentifier>{218a9457-7e5b-4490-bd39-0c8bdb86efb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Main">
+      <UniqueIdentifier>{638cb70f-3813-437e-9f28-9950434575da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\H_GameSystem">
+      <UniqueIdentifier>{3b5af584-fc05-41c0-b106-0f1d99d08570}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\H_Entities">
+      <UniqueIdentifier>{dcfe2d56-61e3-47bf-8f27-8e587540d9bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\H_Main">
+      <UniqueIdentifier>{eb837699-8301-4d87-bc32-dbad0341a27d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\H_System">
+      <UniqueIdentifier>{b86928bf-642c-47f4-a0a4-0968c5a33a2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Entities\Inventory">
+      <UniqueIdentifier>{61a78db1-5b5e-4836-bd02-76fa379ebd7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\H_Entities\H_Inventory">
+      <UniqueIdentifier>{d064c77f-55d4-4eb5-b2cc-3197df640c0a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>소스 파일\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Creature.cpp">
+      <Filter>소스 파일\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>소스 파일\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster.cpp">
+      <Filter>소스 파일\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="MonsterCage.cpp">
+      <Filter>소스 파일\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Fight.cpp">
+      <Filter>소스 파일\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Dungeon.cpp">
+      <Filter>소스 파일\GameSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Village.cpp">
+      <Filter>소스 파일\GameSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="GameFlow.cpp">
+      <Filter>소스 파일\GameSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Shop.cpp">
+      <Filter>소스 파일\GameSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Inventory.cpp">
+      <Filter>소스 파일\Entities\Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>소스 파일\Entities</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameObject.h">
+      <Filter>헤더 파일\H_System</Filter>
+    </ClInclude>
+    <ClInclude Include="TotalHeader.h">
+      <Filter>헤더 파일\H_Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>헤더 파일\H_Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>헤더 파일\H_Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Creature.h">
+      <Filter>헤더 파일\H_Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="MonsterArray.h">
+      <Filter>헤더 파일\H_Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="MonsterCage.h">
+      <Filter>헤더 파일\H_Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Fight.h">
+      <Filter>헤더 파일\H_System</Filter>
+    </ClInclude>
+    <ClInclude Include="Dungeon.h">
+      <Filter>헤더 파일\H_GameSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Village.h">
+      <Filter>헤더 파일\H_GameSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="GameFlow.h">
+      <Filter>헤더 파일\H_GameSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Shop.h">
+      <Filter>헤더 파일\H_GameSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventory.h">
+      <Filter>헤더 파일\H_Entities\H_Inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>헤더 파일\H_Entities</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
