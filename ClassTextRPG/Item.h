@@ -10,7 +10,7 @@ public:
 	Item();
 public:
 	std::string GetName()const;
-	int& GetSellItemMoney();
-	void SetName(std::string name);
-	void SetSellItemMoney(int money);
+	int GetSellItemMoney()const;
+	Item& SetName(std::string name);
+	Item& SetSellItemMoney(int money);
 };

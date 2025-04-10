@@ -25,7 +25,8 @@ void Village::EnterVillage()
 			_Dungeon1.DunGeonSelect();
 			break;
 		case villageSection::_Shop:
-			cout << "상점에 들어갑니다(현재미구현)" << endl;
+			cout << "상점에 들어갑니다(구현중)" << endl;
+			_Shop1.ShopSelect();
 			system("pause");
 			break;
 		case villageSection::_refinery:
@@ -48,8 +49,9 @@ void Village::EnterVillage()
 		}
 	}
 }
-void Village::SetCage(MonsterCage* cage, Player* player)
+void Village::SetObject(MonsterCage* cage, Player* player)
 {
 	_Dungeon1.setCage(cage);
 	_Dungeon1.setPlayer(player);
+	_Shop1.SetShopPlayer(player);
 }

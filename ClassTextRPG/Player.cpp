@@ -54,6 +54,10 @@ void Player::Addgold(int addgold)
 {
 	_gold += addgold;
 }
+void Player::Minusgold(int minusgold)
+{
+	_gold -= minusgold;
+}
 void Player::InfoPrint()
 {
 

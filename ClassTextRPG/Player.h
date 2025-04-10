@@ -21,6 +21,7 @@ public:
 	void SelectPlayerJob();
 	int& Getgold();
 	void Addgold(int addgold);
+	void Minusgold(int minusgold);
 	void InfoPrint() override;
 	void AddItemToInventory(const Item& iTem);
 	void ShowInventorys()const;

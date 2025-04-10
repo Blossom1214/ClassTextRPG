@@ -35,7 +35,7 @@ void GameFlow::SelectStartMenu()
 			_player = new Player();
 			_player->SelectPlayerJob();
 			_cage.MonsterCreateRoutine();
-			_village.SetCage(&_cage, _player);// 위에서 생성한 케이지의 값을 던전에서 사용할수 있도록 연결해줌
+			_village.SetObject(&_cage, _player);// 위에서 생성한 케이지의 값을 던전에서 사용할수 있도록 연결해줌
 			_village.EnterVillage();
 
 			isGameRunning = false;

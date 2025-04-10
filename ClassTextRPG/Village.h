@@ -1,5 +1,6 @@
 #pragma once
 #include "Dungeon.h"
+#include "Shop.h"
 class Village //마을 관련 클래스
 {
 private:
@@ -12,7 +13,8 @@ private:
 		_GameEnd
 	};
 	Dungeon _Dungeon1;
+	Shop _Shop1;
 public:
 	void EnterVillage();
-	void SetCage(MonsterCage* cage, Player* player);
+	void SetObject(MonsterCage* cage, Player* player);
 };

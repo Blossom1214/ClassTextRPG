@@ -10,15 +10,17 @@ string Item::GetName()const
 {
 	return _Item;
 }
-int& Item::GetSellItemMoney()
+int Item::GetSellItemMoney()const
 {
 	return _SellMoney;
 }
-void Item::SetName(string name)
+Item& Item::SetName(string name)
 {
 	_Item = name;
+	return *this;
 }
-void Item::SetSellItemMoney(int money)
+Item& Item::SetSellItemMoney(int money)
 {
 	_SellMoney = money;
+	return *this;
 }
