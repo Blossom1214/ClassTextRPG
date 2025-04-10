@@ -4,7 +4,7 @@
 #include "GameObject.h"
 class Fight
 {
-private:
+public:
 	bool _reFight;
 
 public:

@@ -25,7 +25,7 @@ void Dungeon::DunGeonSelect()
 		case DungeonDifficult::_Esay:
 		{
 			GameObject::PrintMsg("초급던전를 선택했습니다.!");
-
+			_Fight._reFight = true;
 			while (_Fight.ShouldContinue())
 			{
 				MonsterArray arr = DifficultRandomMonster(SelectDifficult);
@@ -44,6 +44,7 @@ void Dungeon::DunGeonSelect()
 		case DungeonDifficult::_Normal:
 		{
 			GameObject::PrintMsg("중급던전를 선택했습니다.!");
+			_Fight._reFight = true;
 			while (_Fight.ShouldContinue())
 			{
 				MonsterArray arr = DifficultRandomMonster(SelectDifficult);
@@ -61,7 +62,9 @@ void Dungeon::DunGeonSelect()
 		}
 		case DungeonDifficult::_Hard:
 		{
+			
 			GameObject::PrintMsg("고급던전를 선택했습니다.!");
+			_Fight._reFight = true;
 			while (_Fight.ShouldContinue())
 			{
 				MonsterArray arr = DifficultRandomMonster(SelectDifficult);
