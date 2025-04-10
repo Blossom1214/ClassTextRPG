@@ -12,8 +12,9 @@ void Village::EnterVillage()
 		cout << "1. 던전 입장" << endl;
 		cout << "2. 상점" << endl;
 		cout << "3. 강화소" << endl;
-		cout << "4. 저장" << endl;
-		cout << "5. 게임종료" << endl;
+		cout << "4. 인벤토리확인" << endl;
+		cout << "5. 저장" << endl;
+		cout << "6. 게임종료" << endl;
 		cout << "선택: ";
 		int Select;
 		cin >> Select;
@@ -31,6 +32,10 @@ void Village::EnterVillage()
 			break;
 		case villageSection::_refinery:
 			cout << "강화소에 들어갑니다(현재 미구현)" << endl;
+			system("pause");
+			break;
+		case villageSection::_InventoryCheck:
+			cout << "현재 플레이어의 인벤토리를 확인합니다.(현재 미구현)" << endl;
 			system("pause");
 			break;
 		case villageSection::_Save:

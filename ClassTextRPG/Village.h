@@ -9,6 +9,7 @@ private:
 		_Dungeon = 1,
 		_Shop,
 		_refinery,
+		_InventoryCheck,
 		_Save,
 		_GameEnd
 	};

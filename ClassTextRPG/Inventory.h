@@ -13,5 +13,4 @@ public:
 public:
 	void AddItem(const Item& _Newitem);
 	void ShowInventory()const; //인벤토리를 보여주는 용도
-
 };

@@ -20,6 +20,7 @@ public:
 	void SetShopPlayer(Player* player);
 	void ShowItemlist()const;
 	void BuyItem();
+	void ShopItemRefill();
 	void ShopSelect();
 	
 	//상점에서 구현해야할것들

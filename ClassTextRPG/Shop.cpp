@@ -66,6 +66,7 @@ void Shop::BuyItem()
             _SellItemlist.erase(_SellItemlist.begin() + isChoice);//구매에 성공하면 해당 벡터위치를 지우고 뒤에있던 값을 땡겨야함
             cout << SelectingItem.GetName() << " 을 구매했습니다." << endl;
             cout << " 남은 소지금: " << _player->Getgold() << endl;
+            ShopItemRefill();
         }
         else
         {
@@ -84,6 +85,25 @@ void Shop::BuyItem()
         cout << "잘못된 값을 입력하셧습니다." << endl;
         return;
     }
+}
+void Shop::ShopItemRefill()
+{
+    int randomNum = rand() % 3;
+    Item newItem;
+
+    if (randomNum == 0)
+    {
+         newItem = _SellingItem.SetName("회복포션").SetSellItemMoney(100);
+    }
+    else if (randomNum == 1)
+    {
+         newItem = _SellingItem.SetName("무기").SetSellItemMoney(800);
+    }
+    else
+    {
+        newItem = _SellingItem.SetName("방어구").SetSellItemMoney(600);
+    }
+     _SellItemlist.push_back(newItem);
 }
 void Shop::ShopSelect() 
 {
