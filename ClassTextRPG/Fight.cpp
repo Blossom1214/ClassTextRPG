@@ -81,6 +81,7 @@ void Fight::IsFight(Player& player, MonsterArray& monsterInfo)
 					player.SetHp(0);
 					GameObject::PrintMsg("플레이어가 쓰러졌습니다...");
 					system("pause");
+					_reFight = false;
 					isCheckFight = false;
 					isFighting = false;
 					break;
@@ -94,6 +95,7 @@ void Fight::IsFight(Player& player, MonsterArray& monsterInfo)
 				if (RunningChance < 50)
 				{
 					GameObject::PrintMsg("도망에 성공하셧습니다!");
+					_reFight = false;
 					isCheckFight = false;
 					isFighting = false;
 					break;
@@ -109,6 +111,7 @@ void Fight::IsFight(Player& player, MonsterArray& monsterInfo)
 						player.SetHp(0);
 						GameObject::PrintMsg("플레이어가 쓰러졌습니다...");
 						system("pause");
+						_reFight = false;
 						isCheckFight = false;
 						isFighting = false;
 						break;
@@ -119,11 +122,12 @@ void Fight::IsFight(Player& player, MonsterArray& monsterInfo)
 			}
 			default:
 				cout << "잘못된 입력입니다!" << endl;
+				system("pause");
 				break;
 			}
-
+			
 		}
-		system("pause");
+		
 	}
 
 }

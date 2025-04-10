@@ -74,7 +74,7 @@ void Shop::BuyItem()
         }
 
     }
-    else if (isChoice == 6)
+    else if (isChoice == 5)
     {
         cout << "구매를 취소하셧습니다" << endl;
         return;
