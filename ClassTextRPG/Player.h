@@ -29,4 +29,5 @@ public:
 	const Inventory& GetInventory() const;
 	void Setgold(int gold);
 	void SetItem(int row, int col, const Item& item);
+	void InitPlayer();
 };

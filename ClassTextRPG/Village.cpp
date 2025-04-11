@@ -39,7 +39,8 @@ void Village::EnterVillage()
 			system("pause");
 			break;
 		case villageSection::_Save:
-			cout << "진행 상황을 저장합니다(현재 미구현)" << endl;
+			cout << "진행 상황을 저장합니다(구현중)" << endl;
+			Save();
 			system("pause");
 			break;
 		case villageSection::_GameEnd:
@@ -56,7 +57,19 @@ void Village::EnterVillage()
 }
 void Village::SetObject(MonsterCage* cage, Player* player)
 {
+	_Cage = cage;
+	_player = player;
+
 	_Dungeon1.setCage(cage);
 	_Dungeon1.setPlayer(player);
 	_Shop1.SetShopPlayer(player);
+}
+void Village::Save()const
+{
+	SaveLoadManager Manager;
+	if(_player)
+	Manager.SavePlayer(*_player);
+	if(_Cage)
+	Manager.SaveMonster(*_Cage);
+	Manager.SaveShop(_Shop1);
 }

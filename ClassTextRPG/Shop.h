@@ -22,16 +22,12 @@ public:
 	void BuyItem();
 	void ShopItemRefill();
 	void ShopSelect();
-	
+	const std::vector<Item>& GetSellItemlist() const;
+	void ShopItemlistClear();
+	void AddSellItemlist(Item& item);
 	//상점에서 구현해야할것들
-	//물건을 사고
-	//팔고 하는것이 기능
-	//현재 인벤토리보기 기능
-	//소지금액도 띄워줘야함
-	//돈이없다면 구매불가(예외처리)
-	//아이템이있다면 팔수있도록하게 만들기
-	//일단 구매기능 구현이 먼저
-	//아이템을 채우는 코드
+	//팔고 하는것이 기능(아직 미구현)
+	//아이템이있다면 팔수있도록하게 만들기 (미구현)
 
 
 

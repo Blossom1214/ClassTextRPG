@@ -1,7 +1,7 @@
 #include "Player.h"
 #include <iostream>
 using namespace std;
-Player::Player() : Creature(" ", 0, 0, 0), _type(0), _gold(0),_playerInventory()
+Player::Player() : Creature("없음", 0, 0, 0), _type(0), _gold(0),_playerInventory()
 {
 }
 void Player::SelectPlayerJob()
@@ -89,4 +89,8 @@ void Player::SetItem(int row, int col, const Item& item)
 	{
 		_playerInventory.SetItem(row, col, item);
 	}
+}
+void Player::InitPlayer()
+{
+	SetName("기본");
 }

@@ -152,3 +152,17 @@ void Shop::ShopSelect()
         }
     }
 }
+
+const vector<Item>& Shop::GetSellItemlist() const
+{
+
+    return _SellItemlist;
+}
+void Shop::ShopItemlistClear()
+{
+    _SellItemlist.clear();
+}
+void Shop::AddSellItemlist(Item& item)
+{
+    _SellItemlist.push_back(item);
+}

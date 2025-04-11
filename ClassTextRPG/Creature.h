@@ -15,7 +15,7 @@ public:
 	int& GetHp();
 	void AddHp(int hp);
 	int& Getlevel();
-	void SetName(std::string name);
+	void SetName(const std::string& name);
 	void SetHp(int hp);
 	void SetAttack(int attack);
 	void SetLevel(int level);

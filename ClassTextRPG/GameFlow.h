@@ -2,6 +2,7 @@
 #include "Village.h"
 #include "Player.h"
 #include "MonsterCage.h"
+#include "SaveLoadManager.h"
 class GameFlow //게임 시작관련 클래스
 {
 private:
@@ -9,6 +10,7 @@ private:
 	Player* _player;
 	Village _village;
 	MonsterCage _cage;
+	Shop _Shop1;
 	enum class StartSelect : int
 	{
 		_start = 1,

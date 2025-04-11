@@ -19,7 +19,7 @@ int& Creature::Getlevel()
 {
 	return _level;
 }
-void Creature::SetName(string name)
+void Creature::SetName(const string& name)
 {
 	_name = name;
 }

@@ -3,7 +3,7 @@
 #include <iostream>
 #include <cstdlib>
 using namespace std;
-GameFlow::GameFlow() : _menu(0), _player(nullptr), _village()
+GameFlow::GameFlow() : _menu(0), _player(nullptr), _village(),_Shop1()
 {
 
 }
@@ -33,17 +33,26 @@ void GameFlow::SelectStartMenu()
 			cout << "새 게임 시작!" << endl;
 			system("pause");
 			_player = new Player();
+			_player->InitPlayer();
 			_player->SelectPlayerJob();
 			_cage.MonsterCreateRoutine();
 			_village.SetObject(&_cage, _player);// 위에서 생성한 케이지의 값을 던전에서 사용할수 있도록 연결해줌
 			_village.EnterVillage();
-
+			
 			isGameRunning = false;
 			break;
 
 
 		case StartSelect::_reload:
 			cout << "게임 불러오기" << endl;
+			_player = new Player();
+			SaveLoadManager Manager;
+			Manager.LoadPlayer(*_player);
+			Manager.LoadMonster(_cage);
+			Manager.LoadShop(_Shop1);
+
+			_village.SetObject(&_cage, _player);
+			_village.EnterVillage();
 			system("pause");
 			isGameRunning = false;
 			break;

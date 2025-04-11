@@ -6,18 +6,25 @@ using namespace std;
 
 void SaveLoadManager::SavePlayer(const Player& player)
 {
-	ofstream outFile("SaveFile/Player.dat", ios::binary); //outfile을 바이너리타입으로 쓰기하겟다 해당장소에
+	ofstream outFile("../SaveFile/Player.dat", ios::binary); //outfile을 바이너리타입으로 쓰기하겟다 해당장소에
 	if (outFile.is_open()) 
 	{
 		string _name = player.GetName(); //플레이어의 이름을 담을 _name을 담음
+		if (_name.empty())
+		{
+			_name = "기본";
+		}
 		size_t _nameLen = _name.length();//그 name의 문자열의 길이를 정수형태로 namelen에 담음
+	
 		outFile.write(reinterpret_cast<const char*>(&_nameLen), sizeof(size_t)); 
 		//_namelen은 size_t즉 64비트운영체제에서 8바이트로 정수형값을 담을수있는 주소와 값을 가지고 있는상태 
 		//따라서 메모리의 형태를 const char*형으로 바꾸어야하는데 이때 사용가능한것이 reinterpret_cast 메모리타입형 강제변환을 사용하여
 		//_nameLen의 주소의 길이를const char형태 즉 바이너리의형태로 size_t(8바이트)만큼 담게된다.
 		//그걸 outfile위치에 쓰게 된것
-		outFile.write(_name.c_str(), _nameLen); //위의 코드로 메모리가 할당되었기때문에 그 크기에맞게 name을 c_str(string을 c스타일로 바꿈(const char*) 해서 집어 넣었다.
-	
+		if (_nameLen > 0)
+		{
+			outFile.write(&_name[0], _nameLen); //위의 코드로 메모리가 할당되었기때문에 그 크기에맞게 name을 c_str(string을 c스타일로 바꿈(const char*) 해서 집어 넣었다.
+		}
 		int _hp = player.Gethp();
 		int _attack = player.GetAttack();
 		int _level = player.GetLevel();
@@ -58,7 +65,7 @@ void SaveLoadManager::SavePlayer(const Player& player)
 }
 void SaveLoadManager::SaveMonster(const MonsterCage& cage)
 {
-	ofstream outFile("SaveFile/Monster.dat", ios::binary);
+	ofstream outFile("../SaveFile/Monster.dat", ios::binary);
 	if (outFile.is_open())
 	{
 		for (int _grade = 1; _grade <= 3; ++_grade)
@@ -79,8 +86,10 @@ void SaveLoadManager::SaveMonster(const MonsterCage& cage)
 
 
 				outFile.write(reinterpret_cast<const char*>(&_monsterNameLen), sizeof(size_t));
-				outFile.write(_monsterName.c_str(), _monsterNameLen);
-
+				if (_monsterNameLen > 0)
+				{
+					outFile.write(&_monsterName[0], _monsterNameLen);
+				}
 				outFile.write(reinterpret_cast<const char*>(&hp), sizeof(int));
 				outFile.write(reinterpret_cast<const char*>(&attack), sizeof(int));
 				outFile.write(reinterpret_cast<const char*>(&level), sizeof(int));
@@ -105,6 +114,41 @@ void SaveLoadManager::SaveMonster(const MonsterCage& cage)
 }
 void SaveLoadManager::SaveShop(const Shop& shop)
 {
+	//상점 구현 해야함...
+	//어카지...
+	//음.... 판매중인 아이템을 일단 반환해야하는 함수가 필요함 완료
+	//몬스터와 플레이어 인벤토리처럼 파일에서 꺼내온 아이템을 상점으로 밀어넣어줄 함수도 구현해야함 (로드)
+	//그리고 로드할때처럼 덮어쓰기가 되게 상점의 목록을 전부 삭제하는 코드도 필요하게됨 (로드)
+	ofstream outFile("../SaveFile/Shop.dat", ios::binary);
+	if (outFile.is_open())
+	{
+		const vector<Item>& _Sellinglist = shop.GetSellItemlist();
+
+		size_t _itemCount = _Sellinglist.size();
+		outFile.write(reinterpret_cast<const char*>(&_itemCount), sizeof(size_t));
+
+		for (const Item& item : _Sellinglist)
+		{
+			string _itemName = item.GetName();
+			size_t _itemNameLen = _itemName.length();
+
+			outFile.write(reinterpret_cast<const char*>(&_itemNameLen), sizeof(size_t));
+			if (_itemNameLen > 0)
+			{
+				outFile.write(&_itemName[0], _itemNameLen);
+			}
+			int _itemSellingMoney = item.GetSellItemMoney();
+			outFile.write(reinterpret_cast<const char*>(&_itemSellingMoney), sizeof(int));
+
+
+		}
+
+		outFile.close();
+	}
+	else
+	{
+		cout << "파일을 열 수 없습니다.!!!" << endl;
+	}
 
 }
 
@@ -185,7 +229,7 @@ void SaveLoadManager::LoadMonster(MonsterCage& cage)
 				inFile.read(&_Monstername[0], _monsterNameLen);//문자열의 첫번째주소부터 namelen의 크기만큼 반복해서 읽어와라.
 
 
-				int hp = 0, attack = 0, level = 0;
+				int hp = 0, attack = 0, level = 0; //0으로 덮어쓰기
 				inFile.read(reinterpret_cast<char*>(&hp), sizeof(int)); 
 				inFile.read(reinterpret_cast<char*>(&attack), sizeof(int));
 				inFile.read(reinterpret_cast<char*>(&level), sizeof(int));
@@ -217,5 +261,42 @@ void SaveLoadManager::LoadMonster(MonsterCage& cage)
 }
 void SaveLoadManager::LoadShop(Shop& shop)
 {
+	ifstream inFile("SaveFile/Shop.dat", ios::binary);
+	if (inFile.is_open())
+	{
+		
+		size_t _itemCount = 0;
+		inFile.read(reinterpret_cast<char*>(&_itemCount), sizeof(size_t));
 
+		shop.ShopItemlistClear();
+
+
+		for (size_t i=0;i<_itemCount;++i)
+		{
+			
+			size_t _itemNameLen = 0;
+			inFile.read(reinterpret_cast<char*>(&_itemNameLen), sizeof(size_t));
+
+			string _itemName;
+			_itemName.resize(_itemNameLen);
+			inFile.read(&_itemName[0], _itemNameLen);
+
+			int _itemSellingMoney = 0;
+			inFile.read(reinterpret_cast<char*>(&_itemSellingMoney), sizeof(int));
+
+			Item newItem;
+			newItem.SetName(_itemName);
+			newItem.SetSellItemMoney(_itemSellingMoney);
+
+			shop.AddSellItemlist(newItem);
+
+
+		}
+		inFile.close();
+
+	}
+	else
+	{
+		cout << "파일을 열 수 없습니다.!!!" << endl;
+	}
 }
