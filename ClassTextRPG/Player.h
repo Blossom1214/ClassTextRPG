@@ -30,4 +30,5 @@ public:
 	void Setgold(int gold);
 	void SetItem(int row, int col, const Item& item);
 	void InitPlayer();
+	void ResizeInventory(size_t row, size_t col);
 };

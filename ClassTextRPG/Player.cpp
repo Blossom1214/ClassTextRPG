@@ -94,3 +94,7 @@ void Player::InitPlayer()
 {
 	SetName("±âº»");
 }
+void Player::ResizeInventory(size_t row, size_t col)
+{
+	_playerInventory.Resize(row, col);
+}

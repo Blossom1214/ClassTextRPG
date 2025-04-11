@@ -154,7 +154,8 @@ void SaveLoadManager::SaveShop(const Shop& shop)
 
 void SaveLoadManager::LoadPlayer(Player& player)
 {
-	ifstream inFile("SaveFile/Player.dat", ios::binary);
+	cout << "[디버그] LoadPlayer 시작!" << endl;
+	ifstream inFile("../SaveFile/Player.dat", ios::binary);
 	if (!inFile.is_open())
 	{
 		cout << "파일을 열 수 없습니다.!!!" << endl;
@@ -184,6 +185,8 @@ void SaveLoadManager::LoadPlayer(Player& player)
 	inFile.read(reinterpret_cast<char*>(&RowCount), sizeof(size_t));
 	inFile.read(reinterpret_cast<char*>(&ColsCount), sizeof(size_t));
 
+	player.ResizeInventory(RowCount, ColsCount);
+
 	for (size_t i = 0; i < RowCount; ++i)
 	{
 		for (size_t j = 0; j < ColsCount; ++j)
@@ -209,8 +212,8 @@ void SaveLoadManager::LoadPlayer(Player& player)
 }
 void SaveLoadManager::LoadMonster(MonsterCage& cage) 
 {
-
-	ifstream inFile("SaveFile/Monster.dat", ios::binary);
+	cout << "[디버그] LoadMonster 시작!" << endl;
+	ifstream inFile("../SaveFile/Monster.dat", ios::binary);
 	if (inFile.is_open())
 	{
 		for (int _grade = 1; _grade <= 3; ++_grade)
@@ -261,7 +264,8 @@ void SaveLoadManager::LoadMonster(MonsterCage& cage)
 }
 void SaveLoadManager::LoadShop(Shop& shop)
 {
-	ifstream inFile("SaveFile/Shop.dat", ios::binary);
+	cout << "[디버그] LoadShop 시작!" << endl;
+	ifstream inFile("../SaveFile/Shop.dat", ios::binary);
 	if (inFile.is_open())
 	{
 		

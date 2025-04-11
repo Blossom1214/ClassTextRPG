@@ -68,3 +68,7 @@ void Inventory::SetItem(int row, int cols, const Item& item)
 		_grid[row][cols] = item;
 	}
 }
+void Inventory::Resize(size_t row, size_t col)
+{
+	_grid.resize(row, vector<Item>(col));
+}

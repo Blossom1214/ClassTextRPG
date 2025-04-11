@@ -17,4 +17,5 @@ public:
 	const int GetCols()const;
 	const std::vector<std::vector<Item>> Getgrid()const;
 	void SetItem(int row, int cols, const Item& item);
+	void Resize(size_t row, size_t col);
 };
