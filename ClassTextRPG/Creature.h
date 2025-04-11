@@ -13,9 +13,13 @@ public:
 public:
 	virtual void InfoPrint() = 0; // 추상클래스 선언
 	int& GetHp();
-	void SetHp(int hp);
 	void AddHp(int hp);
 	int& Getlevel();
+	void SetName(std::string name);
+	void SetHp(int hp);
+	void SetAttack(int attack);
+	void SetLevel(int level);
+
 	std::string GetName()const;
 	int Gethp()const;
 	int GetAttack() const;

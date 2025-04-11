@@ -25,4 +25,14 @@ vector<Monster>& MonsterCage::GetMonster(int grade)
 {
 	return _Cage[grade - 1];
 }
-
+const vector<Monster>& MonsterCage::GetMonsters(int grade) const 
+{
+	return _Cage[grade - 1];
+}
+void MonsterCage::AddMonsters(int grade, const Monster& monster)
+{
+	if (grade >= 1 && grade <= 3)
+	{
+		_Cage[grade - 1].push_back(monster);
+	}
+}

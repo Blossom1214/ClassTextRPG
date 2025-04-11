@@ -39,7 +39,6 @@ void SaveLoadManager::SavePlayer(const Player& player)
 		{
 			for (const auto& _iTem : _Row)
 			{
-
 				string _itemName = _iTem.GetName();
 				size_t _itemNameLen = _itemName.length();
 
@@ -48,7 +47,6 @@ void SaveLoadManager::SavePlayer(const Player& player)
 
 				int _itemSellMoney = _iTem.GetSellItemMoney();
 				outFile.write(reinterpret_cast<const char*>(&_itemSellMoney), sizeof(int));
-
 			}
 		}
 		outFile.close();
@@ -60,6 +58,49 @@ void SaveLoadManager::SavePlayer(const Player& player)
 }
 void SaveLoadManager::SaveMonster(const MonsterCage& cage)
 {
+	ofstream outFile("SaveFile/Monster.dat", ios::binary);
+	if (outFile.is_open())
+	{
+		for (int _grade = 1; _grade <= 3; ++_grade)
+		{
+			const vector<Monster>& monsters = cage.GetMonsters(_grade);//등급별로 몬스터의 정보를담을 읽기전용변수생성 //행을쓴것
+
+			size_t MonsterCount = monsters.size();
+			outFile.write(reinterpret_cast<const char*>(&MonsterCount), sizeof(size_t)); //등급별 몬스터의 수를 저장하는 바이너리형태의 메모리공간을 씀
+
+			for (const Monster& monster : monsters) //범위 지정 반복문 monsters의 크기만큼 반복하게 설정되어있음
+			{
+				string _monsterName = monster.GetName();
+				size_t _monsterNameLen = _monsterName.length();
+
+				int hp = monster.Gethp();
+				int attack = monster.GetAttack();
+				int level = monster.GetLevel();
+
+
+				outFile.write(reinterpret_cast<const char*>(&_monsterNameLen), sizeof(size_t));
+				outFile.write(_monsterName.c_str(), _monsterNameLen);
+
+				outFile.write(reinterpret_cast<const char*>(&hp), sizeof(int));
+				outFile.write(reinterpret_cast<const char*>(&attack), sizeof(int));
+				outFile.write(reinterpret_cast<const char*>(&level), sizeof(int));
+
+
+
+			}
+
+
+
+		}
+		outFile.close();
+
+
+	}
+	else
+	{
+		cout << "파일을 열 수 없습니다.!!!" << endl;
+	}
+
 
 }
 void SaveLoadManager::SaveShop(const Shop& shop)
@@ -67,13 +108,112 @@ void SaveLoadManager::SaveShop(const Shop& shop)
 
 }
 
-void SaveLoadManager::LoadPlayer(Player& player) 
+void SaveLoadManager::LoadPlayer(Player& player)
 {
+	ifstream inFile("SaveFile/Player.dat", ios::binary);
+	if (!inFile.is_open())
+	{
+		cout << "파일을 열 수 없습니다.!!!" << endl;
+		return;
+	}
+	size_t _nameLen = 0;
+	inFile.read(reinterpret_cast<char*>(&_nameLen), sizeof(size_t));//파일안의 문자열 즉 이름을  char*형식으로 메모리형변환을 통해서  이름의 길이를 바이너리 형태로 읽음 size_t만큼
 
+	string _name;
+	_name.resize(_nameLen); //string컨테이너의 크기 즉 문자열배열의 크기를 namelen 문자열을 읽을 메모리만큼 resize하게됨
+	inFile.read(&_name[0], _nameLen);//문자열의 첫번째주소부터 namelen의 크기만큼 반복해서 읽어와라.
+
+	int hp = 0, attack = 0, level = 0, gold = 0; //가지고올때의 초기값을 설정 즉 해당스탯을 초기화해주어야함
+	inFile.read(reinterpret_cast<char*>(&hp), sizeof(int)); //읽을꺼에요 근데 내가 읽는건 바이너리네? 그럼 주소도 바이너리 형태로 바꿔주고 그걸 int사이즈만큼 할당해줘야하네?
+	inFile.read(reinterpret_cast<char*>(&attack), sizeof(int));
+	inFile.read(reinterpret_cast<char*>(&level), sizeof(int));
+	inFile.read(reinterpret_cast<char*>(&gold), sizeof(int));
+
+	player.SetName(_name);
+	player.SetHp(hp);
+	player.SetAttack(attack);
+	player.SetLevel(level);
+	player.Setgold(gold);
+
+	size_t RowCount = 0;
+	size_t ColsCount = 0;
+	inFile.read(reinterpret_cast<char*>(&RowCount), sizeof(size_t));
+	inFile.read(reinterpret_cast<char*>(&ColsCount), sizeof(size_t));
+
+	for (size_t i = 0; i < RowCount; ++i)
+	{
+		for (size_t j = 0; j < ColsCount; ++j)
+		{
+			size_t _itemNameLen = 0;
+			inFile.read(reinterpret_cast<char*>(&_itemNameLen), sizeof(size_t));
+
+			string _itemName;
+			_itemName.resize(_itemNameLen); 
+			inFile.read(&_itemName[0], _itemNameLen);
+					
+			int _itemSellMoney = 0;
+			inFile.read(reinterpret_cast<char*>(&_itemSellMoney), sizeof(int));
+
+			Item newItem;
+			newItem.SetName(_itemName).SetSellItemMoney(_itemSellMoney);
+		
+			player.SetItem((int)i,(int) j, newItem);
+			
+		}	
+	}
+	inFile.close();
 }
 void SaveLoadManager::LoadMonster(MonsterCage& cage) 
 {
 
+	ifstream inFile("SaveFile/Monster.dat", ios::binary);
+	if (inFile.is_open())
+	{
+		for (int _grade = 1; _grade <= 3; ++_grade)
+		{
+
+			size_t MonsterCount = 0;
+			inFile.read(reinterpret_cast<char*>(&MonsterCount), sizeof(size_t)); 
+
+			for (size_t i =0;i<MonsterCount;++i) 
+			{
+				size_t _monsterNameLen = 0;
+				inFile.read(reinterpret_cast<char*>(&_monsterNameLen), sizeof(size_t));
+
+				string _Monstername;
+				_Monstername.resize(_monsterNameLen); //string컨테이너의 크기 즉 문자열배열의 크기를 namelen 문자열을 읽을 메모리만큼 resize하게됨
+				inFile.read(&_Monstername[0], _monsterNameLen);//문자열의 첫번째주소부터 namelen의 크기만큼 반복해서 읽어와라.
+
+
+				int hp = 0, attack = 0, level = 0;
+				inFile.read(reinterpret_cast<char*>(&hp), sizeof(int)); 
+				inFile.read(reinterpret_cast<char*>(&attack), sizeof(int));
+				inFile.read(reinterpret_cast<char*>(&level), sizeof(int));
+			
+			
+				Monster monster;
+					   
+				monster.SetName(_Monstername);
+				monster.SetHp(hp);
+				monster.SetAttack(attack);
+				monster.SetLevel(level);
+				
+				cage.AddMonsters(_grade, monster);
+			}
+
+
+
+		}
+		inFile.close();
+
+
+	}
+	else
+	{
+		cout << "파일을 열 수 없습니다.!!!" << endl;
+	}
+
+	
 }
 void SaveLoadManager::LoadShop(Shop& shop)
 {

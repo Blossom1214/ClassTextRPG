@@ -27,4 +27,6 @@ public:
 	void ShowInventorys()const;
 	int Getgold()const;
 	const Inventory& GetInventory() const;
+	void Setgold(int gold);
+	void SetItem(int row, int col, const Item& item);
 };

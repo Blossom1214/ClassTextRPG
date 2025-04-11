@@ -61,3 +61,10 @@ const vector<vector<Item>> Inventory::Getgrid()const
 
 	return _grid;
 }
+void Inventory::SetItem(int row, int cols, const Item& item)
+{
+	if (row >= 0 && row < _ROW && cols >= 0 && cols < _COLS)
+	{
+		_grid[row][cols] = item;
+	}
+}

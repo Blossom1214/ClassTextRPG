@@ -16,4 +16,5 @@ public:
 	const int GetRow()const;
 	const int GetCols()const;
 	const std::vector<std::vector<Item>> Getgrid()const;
+	void SetItem(int row, int cols, const Item& item);
 };

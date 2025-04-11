@@ -8,6 +8,7 @@ private:
 	int _SellMoney;
 public:
 	Item();
+	Item(const std::string& name, int sellPrice);
 public:
 	std::string GetName()const;
 	int GetSellItemMoney()const;

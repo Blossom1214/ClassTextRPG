@@ -79,3 +79,14 @@ const Inventory& Player::GetInventory() const
 {
 	return _playerInventory;
 }
+void Player::Setgold(int gold)
+{
+	_gold = gold;
+}
+void Player::SetItem(int row, int col, const Item& item)
+{
+	if (row >= 0 && row < _playerInventory.GetRow() && col >= 0 && col < _playerInventory.GetCols())
+	{
+		_playerInventory.SetItem(row, col, item);
+	}
+}
