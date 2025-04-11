@@ -73,3 +73,16 @@ void Village::Save()const
 	Manager.SaveMonster(*_Cage);
 	Manager.SaveShop(_Shop1);
 }
+void Village::Load()
+{
+	SaveLoadManager Manager;
+	if (_player)
+		Manager.LoadPlayer(*_player);
+	if (_Cage)
+		Manager.LoadMonster(*_Cage);
+	Manager.LoadShop(_Shop1);
+}
+Shop& Village::GetShop()
+{ 
+	return _Shop1; 
+}

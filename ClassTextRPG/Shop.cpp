@@ -11,7 +11,7 @@ Shop::Shop() :_SellItemlist(),_SellingItem(),_player(nullptr)
 void Shop::ShopSettingSellingItem()
 {
     srand(static_cast<unsigned>(time(0))); 
-
+    cout << "[디버그] ShopSettingSellingItem() 호출됨" << endl;
     for (int i = 0; i < 5; ++i)
     {
         int randomNum = rand() % 3;
@@ -165,4 +165,8 @@ void Shop::ShopItemlistClear()
 void Shop::AddSellItemlist(Item& item)
 {
     _SellItemlist.push_back(item);
+}
+void Shop::LoadFinished()
+{
+    _isInitialized = true;
 }

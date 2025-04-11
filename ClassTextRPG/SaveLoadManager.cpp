@@ -264,7 +264,6 @@ void SaveLoadManager::LoadMonster(MonsterCage& cage)
 }
 void SaveLoadManager::LoadShop(Shop& shop)
 {
-	cout << "[디버그] LoadShop 시작!" << endl;
 	ifstream inFile("../SaveFile/Shop.dat", ios::binary);
 	if (inFile.is_open())
 	{
@@ -296,7 +295,12 @@ void SaveLoadManager::LoadShop(Shop& shop)
 
 
 		}
+		
+		
+
+
 		inFile.close();
+		shop.LoadFinished();
 
 	}
 	else

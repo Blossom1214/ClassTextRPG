@@ -23,4 +23,6 @@ public:
 	void EnterVillage();
 	void SetObject(MonsterCage* cage, Player* player);
 	void Save()const;
+	void Load();
+	Shop& GetShop();
 };

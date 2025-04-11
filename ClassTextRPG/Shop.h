@@ -25,6 +25,7 @@ public:
 	const std::vector<Item>& GetSellItemlist() const;
 	void ShopItemlistClear();
 	void AddSellItemlist(Item& item);
+	void LoadFinished();
 	//상점에서 구현해야할것들
 	//팔고 하는것이 기능(아직 미구현)
 	//아이템이있다면 팔수있도록하게 만들기 (미구현)
