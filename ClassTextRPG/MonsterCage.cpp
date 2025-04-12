@@ -18,7 +18,6 @@ void MonsterCage::MonsterCreateRoutine()
 
 			}
 		}
-
 	}
 }
 vector<Monster>& MonsterCage::GetMonster(int grade)
