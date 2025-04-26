@@ -1,7 +1,7 @@
 #pragma once
-#include "Player.h"
-#include "MonsterCage.h"
 #include "Fight.h"
+class Player;
+class MonsterCage;
 class Dungeon //던전 입장시!
 {
 private:

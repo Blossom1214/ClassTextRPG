@@ -1,9 +1,10 @@
 #pragma once
-#include "Player.h"
+
 #include "Item.h"
 #include <vector>
 #include <ctime>
 #include <cstdlib>
+class Player;
 class Shop
 {
 private:

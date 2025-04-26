@@ -1,8 +1,8 @@
 #pragma once
 #include "Village.h"
-#include "Player.h"
 #include "MonsterCage.h"
 #include "SaveLoadManager.h"
+class Player;
 class GameFlow //게임 시작관련 클래스
 {
 private:

@@ -2,7 +2,8 @@
 #include "Dungeon.h"
 #include "Shop.h"
 #include "SaveLoadManager.h"
-#include "Player.h"
+class MonsterCage;
+class Player;
 class Village //마을 관련 클래스
 {
 private:

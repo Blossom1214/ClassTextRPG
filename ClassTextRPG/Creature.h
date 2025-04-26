@@ -11,7 +11,7 @@ public:
 	Creature(std::string name, int hp, int attack, int level);
 	virtual ~Creature();
 public:
-	virtual void InfoPrint() = 0; // 추상클래스 선언
+	virtual void InfoPrint() = 0; //순수가상함수선언 //추상클래스선언
 	int& GetHp();
 	void AddHp(int hp);
 	int& Getlevel();

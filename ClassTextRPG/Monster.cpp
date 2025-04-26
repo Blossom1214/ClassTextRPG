@@ -6,6 +6,7 @@ using namespace std;
 
 Monster::Monster() : Creature("", 0, 0, 0)
 {
+
 	_name = "";
 	_hp = rand() % 100 + 1;
 	_attack = rand() % 50 + 1;

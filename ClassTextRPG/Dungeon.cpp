@@ -1,5 +1,6 @@
 #include "Dungeon.h"
 #include "GameObject.h"
+#include "MonsterCage.h"
 #include <iostream>
 #include <vector>
 using namespace std;

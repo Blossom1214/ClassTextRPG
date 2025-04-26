@@ -94,16 +94,9 @@ void SaveLoadManager::SaveMonster(const MonsterCage& cage)
 				outFile.write(reinterpret_cast<const char*>(&attack), sizeof(int));
 				outFile.write(reinterpret_cast<const char*>(&level), sizeof(int));
 
-
-
 			}
-
-
-
 		}
 		outFile.close();
-
-
 	}
 	else
 	{
@@ -154,7 +147,6 @@ void SaveLoadManager::SaveShop(const Shop& shop)
 
 void SaveLoadManager::LoadPlayer(Player& player)
 {
-	cout << "[디버그] LoadPlayer 시작!" << endl;
 	ifstream inFile("../SaveFile/Player.dat", ios::binary);
 	if (!inFile.is_open())
 	{
@@ -212,7 +204,6 @@ void SaveLoadManager::LoadPlayer(Player& player)
 }
 void SaveLoadManager::LoadMonster(MonsterCage& cage) 
 {
-	cout << "[디버그] LoadMonster 시작!" << endl;
 	ifstream inFile("../SaveFile/Monster.dat", ios::binary);
 	if (inFile.is_open())
 	{
@@ -293,11 +284,7 @@ void SaveLoadManager::LoadShop(Shop& shop)
 
 			shop.AddSellItemlist(newItem);
 
-
 		}
-		
-		
-
 
 		inFile.close();
 		shop.LoadFinished();

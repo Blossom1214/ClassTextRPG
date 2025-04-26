@@ -1,5 +1,6 @@
 #include "GameFlow.h"
 #include "GameObject.h"
+#include "Player.h"
 #include <iostream>
 #include <cstdlib>
 using namespace std;
